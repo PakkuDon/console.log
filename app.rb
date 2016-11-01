@@ -137,12 +137,19 @@ end
 
 # Show login form
 get '/session/new' do
-
+  erb :session_new
 end
 
 # Authenticate user
 post '/session' do
+  user = User.find_by(email: params[:email])
 
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+    redirect to '/'
+  else
+    erb :session_new
+  end
 end
 
 # Log user out
