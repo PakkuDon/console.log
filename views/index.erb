@@ -1,0 +1,12 @@
+<% @posts.each do |post| %>
+<div class="post">
+  <div>
+    Posted by <%= post.user.username %> on
+    <%= post.date_posted.strftime("%b %-d %Y") %>
+  </div>
+  <h2><%= post.title %></h2>
+  <p>
+    <%= post.content.slice(0, 200) %>
+  </p>
+</div>
+<% end %>

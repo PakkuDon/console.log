@@ -7,5 +7,6 @@ require_relative 'models/post'
 require_relative 'models/comment'
 
 get '/' do
+  @posts = Post.all
   erb :index
 end
