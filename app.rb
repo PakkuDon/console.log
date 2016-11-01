@@ -6,6 +6,20 @@ require_relative 'models/user'
 require_relative 'models/post'
 require_relative 'models/comment'
 
+enable :sessions
+
+helpers do
+  # Return true if user logged in
+  def logged_in?
+    !!current_user
+  end
+
+  # Get current user
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
+end
+
 # -- Posts
 # Return list of posts
 get '/' do
