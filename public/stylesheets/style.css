@@ -16,3 +16,11 @@ header,
 main {
   padding: 10px;
 }
+
+input,
+textarea {
+  width: 100%;
+  display: block;
+  margin: 5px 0;
+  font-size: inherit;
+}

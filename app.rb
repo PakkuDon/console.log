@@ -15,12 +15,24 @@ end
 
 # Show create post form
 get '/posts/new' do
-
+  erb :post_new
 end
 
 # Create new post
 post '/posts' do
+  post = Post.new
+  post.title = params[:title]
+  post.content = params[:content]
+  post.date_posted = Time.new
+  post.view_count = 0
+  # TODO: Change ID to current user
+  post.user_id = 1
 
+  if post.save
+    redirect to "/posts/#{post.id}"
+  else
+    erb :post_new
+  end
 end
 
 # Show single post
