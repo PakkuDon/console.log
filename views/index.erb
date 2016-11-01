@@ -4,7 +4,9 @@
     Posted by <%= post.user.username %> on
     <%= post.date_posted.strftime("%b %-d %Y") %>
   </div>
-  <h2><%= post.title %></h2>
+  <h2>
+    <a href="/posts/<%= post.id %>"><%= post.title %></a>
+  </h2>
   <p>
     <%= post.content.slice(0, 200) %>
   </p>

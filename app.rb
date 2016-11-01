@@ -25,7 +25,16 @@ end
 
 # Show single post
 get '/posts/:id' do
-
+  @post = Post.find_by(id: params[:id])
+  if @post
+    # Update view count
+    @post.view_count += 1
+    @post.save
+    erb :post_view
+  else
+    @error = 'Post not found.'
+    erb :error
+  end
 end
 
 # Show edit post form
@@ -62,5 +71,5 @@ end
 
 # Log user out
 delete '/session' do
-  
+
 end

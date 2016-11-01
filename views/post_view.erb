@@ -1,0 +1,11 @@
+<div>
+  Posted by <%= @post.user.username %> on
+  <%= @post.date_posted.strftime("%b %-d %Y") %>
+</div>
+<h2><%= @post.title %></h2>
+<p>
+  <%= @post.content %>
+</p>
+<div class="post-stats">
+  <span><%= @post.view_count %> views</span>
+</div>
