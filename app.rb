@@ -147,5 +147,6 @@ end
 
 # Log user out
 delete '/session' do
-
+  session[:user_id] = nil
+  redirect to '/'
 end
