@@ -80,7 +80,15 @@ end
 
 # Delete post
 delete '/posts/:id' do
+  @post = Post.find_by(id: params[:id])
 
+  if @post
+    @post.destroy
+    redirect to '/'
+  else
+    @error = 'Post not found.'
+    erb :error
+  end
 end
 
 # -- Comments
