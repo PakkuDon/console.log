@@ -98,6 +98,29 @@ post '/comments' do
 end
 
 # -- Users
+# Show registration form
+get '/users/new' do
+  erb :user_new
+end
+
+# Create new user
+post '/users' do
+  user = User.new
+  user.username = params[:username]
+  user.email = params[:email]
+  user.password = params[:password]
+  user.date_joined = Time.new
+
+  # If user created, authenticate user
+  # and redirect to home
+  if user.save
+    session[:user_id] = user.id
+    redirect to '/'
+  else
+    erb :user_new
+  end
+end
+
 # Show login form
 get '/session/new' do
 
