@@ -1,3 +1,7 @@
+<div class="actions">
+  <a href="/posts/<%= @post.id %>/edit">Edit</a>
+</div>
+
 <div>
   Posted by <%= @post.user.username %> on
   <%= @post.date_posted.strftime("%b %-d %Y") %>

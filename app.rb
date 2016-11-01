@@ -51,12 +51,31 @@ end
 
 # Show edit post form
 get '/posts/:id/edit' do
-
+  @post = Post.find_by(id: params[:id])
+  if @post
+    erb :post_edit
+  else
+    @error = 'Post not found.'
+    erb :error
+  end
 end
 
 # Update post details
 put '/posts/:id' do
+  @post = Post.find_by(id: params[:id])
+  if @post
+    @post.title = params[:title]
+    @post.content = params[:content]
 
+    if @post.save
+      redirect to "/posts/#{@post.id}"
+    else
+      erb :post_edit
+    end
+  else
+    @error = 'Post not found.'
+    erb :error
+  end
 end
 
 # Delete post
