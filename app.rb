@@ -28,7 +28,7 @@ end
 # -- Posts
 # Return list of posts
 get '/' do
-  @posts = Post.all
+  @posts = Post.all.order('date_posted desc')
   erb :index
 end
 
