@@ -183,6 +183,19 @@ post '/users' do
   end
 end
 
+# Show user profile
+get '/users/:username' do
+  @user = User.find_by(username: params[:username])
+
+  if @user
+    @user.posts = @user.posts.order('date_posted desc')
+    erb :user_view
+  else
+    @error = 'User not found'
+    erb :error
+  end
+end
+
 # Show login form
 get '/session/new' do
   # Redirect if logged in

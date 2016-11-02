@@ -1,0 +1,19 @@
+<h2><%= @user.username %></h2>
+<p>
+  Joined <%= @user.date_joined.strftime("%b %-d %Y")%>
+</p>
+<h3>Posts</h3>
+<% @user.posts.each do |post| %>
+  <div class="post">
+    <div>
+      Posted on <%= post.date_posted.strftime("%b %-d %Y") %>
+      - <%= post.estimated_reading_time %>
+    </div>
+    <h2>
+      <a href="/posts/<%= post.id %>"><%= post.title %></a>
+    </h2>
+    <p>
+      <%= post.content.slice(0, 200) %>
+    </p>
+  </div>
+<% end %>

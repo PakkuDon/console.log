@@ -9,8 +9,8 @@
 </div>
 
 <div>
-  Posted by <%= @post.user.username %> on
-  <%= @post.date_posted.strftime("%b %-d %Y") %>
+  Posted by <a href="/users/<%= @post.user.username %>"><%= @post.user.username %></a>
+  on <%= @post.date_posted.strftime("%b %-d %Y") %>
   - <%= @post.estimated_reading_time %>
 </div>
 <h2><%= @post.title %></h2>
@@ -35,7 +35,7 @@
       <div>
         <time><%= comment.date_posted.strftime("%b %-d %Y @ %l:%M %p")%></time>
       </div>
-      <span class="author"><%= comment.user.username %></span>: <%= comment.content %>
+      <span class="author"><a href="/users/<%= comment.user.username %>"><%= comment.user.username %></a></span>: <%= comment.content %>
     </div>
   <% end %>
 </div>

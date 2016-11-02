@@ -12,7 +12,7 @@
       <header>
         <div>
           <% if logged_in? %>
-            Welcome, <%= current_user.username %>
+            Welcome, <a href="/users/<%= current_user.username %>"><%= current_user.username %></a>
             <form action="/session" method="post">
               <input type="hidden" name="_method" value="delete">
               <button>Log out</button>
