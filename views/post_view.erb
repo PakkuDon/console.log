@@ -20,3 +20,22 @@
 <div class="post-stats">
   <span><%= @post.view_count %> views</span>
 </div>
+
+<div class="comments">
+  <% if logged_in? %>
+    <form action="/comments" method="post">
+      <textarea name="content" id="" rows="5" placeholder="Leave a comment"></textarea>
+      <input type="hidden" name="post_id" value="<%= @post.id %>">
+      <button>Post comment</button>
+    </form>
+  <% end %>
+
+  <% @post.comments.each do |comment| %>
+    <div class="comment">
+      <div>
+        <time><%= comment.date_posted.strftime("%b %-d %Y @ %l:%M %p")%></time>
+      </div>
+      <span class="author"><%= comment.user.username %></span>: <%= comment.content %>
+    </div>
+  <% end %>
+</div>

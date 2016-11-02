@@ -4,6 +4,7 @@ AVERAGE_WPM = 150
 
 class Post < ActiveRecord::Base
   belongs_to :user
+  has_many :comments
 
   # Return estimated reading time for post content
   def estimated_reading_time
