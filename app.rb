@@ -28,6 +28,15 @@ end
 # -- Posts
 # Return list of posts
 get '/' do
-  @posts = Post.all.order('date_posted desc')
+  @q = params[:q]
+
+  if @q
+    @posts = Post.where("lower(title) LIKE ? OR lower(content) LIKE ?",
+      "%#{@q.downcase}%", "%#{@q.downcase}%")
+  else
+    @posts = Post.all
+  end
+  @posts = @posts.order('date_posted desc')
+
   erb :index
 end

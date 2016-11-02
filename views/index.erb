@@ -3,6 +3,11 @@
   <a href="/posts/new">New post</a>
 </div>
 <% end %>
+<form action="/">
+  <input name="q" type="text" value="<%= @q %>" placeholder="Search">
+  <button>Search</button>
+</form>
+
 <% @posts.each do |post| %>
 <div class="post">
   <div>
