@@ -1,6 +1,8 @@
+<% if logged_in? %>
 <div class="actions">
   <a href="/posts/new">New post</a>
 </div>
+<% end %>
 <% @posts.each do |post| %>
 <div class="post">
   <div>

@@ -1,9 +1,11 @@
 <div class="actions">
-  <a href="/posts/<%= @post.id %>/edit">Edit</a>
-  <form action="/posts/<%= @post.id %>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button>Delete</button>
-  </form>
+  <% if is_owner?(@post) %>
+    <a href="/posts/<%= @post.id %>/edit">Edit</a>
+    <form action="/posts/<%= @post.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete</button>
+    </form>
+  <% end %>
 </div>
 
 <div>
