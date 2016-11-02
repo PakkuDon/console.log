@@ -19,8 +19,8 @@ post '/posts' do
   end
 
   @post = Post.new
-  @post.title = params[:title]
-  @post.content = params[:content]
+  @post.title = escape_html(params[:title])
+  @post.content = escape_html(params[:content])
   @post.date_posted = Time.new
   @post.view_count = 0
   @post.user_id = current_user.id
@@ -71,8 +71,8 @@ put '/posts/:id' do
       redirect to "/posts/#{@post.id}"
     end
 
-    @post.title = params[:title]
-    @post.content = params[:content]
+    @post.title = escape_html(params[:title])
+    @post.content = escape_html(params[:content])
 
     if @post.save
       redirect to "/posts/#{@post.id}"

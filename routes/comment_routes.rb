@@ -6,7 +6,7 @@ require_relative '../models/post'
 post '/comments' do
   if logged_in?
     @comment = Comment.new
-    @comment.content = params[:content]
+    @comment.content = escape_html(params[:content])
     @comment.post_id = params[:post_id]
     @comment.date_posted = Time.new
     @comment.user_id = current_user.id

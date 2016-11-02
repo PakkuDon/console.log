@@ -23,6 +23,11 @@ helpers do
   def current_user
     User.find_by(id: session[:user_id])
   end
+
+  # Escape HTML characters
+  def escape_html(str)
+    Rack::Utils.escape_html(str)
+  end
 end
 
 # -- Posts
