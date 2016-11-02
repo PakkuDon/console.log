@@ -18,16 +18,16 @@ post '/users' do
     redirect to '/'
   end
 
-  user = User.new
-  user.username = params[:username]
-  user.email = params[:email]
-  user.password = params[:password]
-  user.date_joined = Time.new
+  @user = User.new
+  @user.username = params[:username]
+  @user.email = params[:email]
+  @user.password = params[:password]
+  @user.date_joined = Time.new
 
   # If user created, authenticate user
   # and redirect to home
-  if user.save
-    session[:user_id] = user.id
+  if @user.save
+    session[:user_id] = @user.id
     redirect to '/'
   else
     erb :user_new
@@ -70,6 +70,7 @@ post '/session' do
     session[:user_id] = user.id
     redirect to '/'
   else
+    @error = 'Invalid email or password'
     erb :session_new
   end
 end

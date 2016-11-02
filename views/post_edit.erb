@@ -1,4 +1,17 @@
 <h2>Editing post</h2>
+<% if !@post.valid? %>
+  <div class="error">
+    The following errors occurred:
+    <ul>
+      <% @post.errors.messages.each_pair do |field, messages| %>
+        <% messages.each do |message| %>
+          <li><%= "#{field} #{message}" %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <form action="/posts/<%= @post.id %>" method="post">
   <input type="hidden" name="_method" value="put">
   <button>Save changes</button>

@@ -18,15 +18,15 @@ post '/posts' do
     redirect to '/session/new'
   end
 
-  post = Post.new
-  post.title = params[:title]
-  post.content = params[:content]
-  post.date_posted = Time.new
-  post.view_count = 0
-  post.user_id = current_user.id
+  @post = Post.new
+  @post.title = params[:title]
+  @post.content = params[:content]
+  @post.date_posted = Time.new
+  @post.view_count = 0
+  @post.user_id = current_user.id
 
-  if post.save
-    redirect to "/posts/#{post.id}"
+  if @post.save
+    redirect to "/posts/#{@post.id}"
   else
     erb :post_new
   end

@@ -23,8 +23,20 @@
 
 <div class="comments">
   <% if logged_in? %>
+    <% if @comment && !@comment.valid? %>
+      <div class="error">
+        The following errors occurred:
+        <ul>
+          <% @comment.errors.messages.each_pair do |field, messages| %>
+            <% messages.each do |message| %>
+              <li><%= "#{field} #{message}" %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <form action="/comments" method="post">
-      <textarea name="content" id="" rows="5" placeholder="Leave a comment"></textarea>
+      <textarea name="content" id="" rows="5" placeholder="Leave a comment"><%= @comment ? @comment.content : "" %></textarea>
       <input type="hidden" name="post_id" value="<%= @post.id %>">
       <button>Post comment</button>
     </form>
