@@ -8,6 +8,7 @@
   <div>
     Posted by <%= post.user.username %> on
     <%= post.date_posted.strftime("%b %-d %Y") %>
+    - <%= post.estimated_reading_time %>
   </div>
   <h2>
     <a href="/posts/<%= post.id %>"><%= post.title %></a>
