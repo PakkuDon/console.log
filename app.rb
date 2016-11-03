@@ -17,12 +17,22 @@ helpers do
 
   # Return true if item belongs to user
   def is_owner?(item)
-    session[:user_id] == item.user_id
+    current_user_id == item.user_id
+  end
+
+  # Get current user ID
+  def current_user_id
+    session[:user_id]
   end
 
   # Get current user
   def current_user
-    User.find_by(id: session[:user_id])
+    User.find_by(id: current_user_id)
+  end
+
+  # Return true if user has liked post
+  def liked?(post)
+    logged_in? && current_user.likes.where(post_id: post.id).any?
   end
 
   # Escape HTML characters

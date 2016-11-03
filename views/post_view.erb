@@ -19,6 +19,21 @@
 </p>
 <div class="post-stats">
   <span><%= @post.view_count %> views</span>
+  <% if logged_in? %>
+    <% if liked?(@post) %>
+      <form action="/likes" method="post">
+        <input type="hidden" name="post_id" value="<%= @post.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <button>Unlike</button>
+      </form>
+    <% else %>
+      <form action="/likes" method="post">
+        <input type="hidden" name="post_id" value="<%= @post.id %>">
+        <button>Like</button>
+      </form>
+    <% end %>
+  <% end %>
+  <span><%= @post.likes.length %> likes</span>
 </div>
 
 <div class="comments">
