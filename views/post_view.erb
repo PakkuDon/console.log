@@ -15,7 +15,7 @@
 </div>
 <h2><%= @post.title %></h2>
 <p>
-  <%= @post.content %>
+  <%= render_markdown(@post.content) %>
 </p>
 <div class="post-stats">
   <span><%= @post.view_count %> views</span>
@@ -47,7 +47,10 @@
       <div>
         <time><%= comment.date_posted.strftime("%b %-d %Y @ %l:%M %p")%></time>
       </div>
-      <span class="author"><a href="/users/<%= comment.user.username %>"><%= comment.user.username %></a></span>: <%= comment.content %>
+      <div class="content">
+        <span class="author"><a href="/users/<%= comment.user.username %>"><%= comment.user.username %></a></span>
+        <%= render_markdown(comment.content) %>
+      </div>
     </div>
   <% end %>
 </div>

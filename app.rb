@@ -1,6 +1,7 @@
 require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'redcarpet'
 require_relative 'db_config'
 require_relative 'models/user'
 require_relative 'models/post'
@@ -27,6 +28,14 @@ helpers do
   # Escape HTML characters
   def escape_html(str)
     Rack::Utils.escape_html(str)
+  end
+
+  # Convert markdown to HTML
+  def render_markdown(str)
+    renderer = Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML.new(hard_wrap: true),
+      autolink: true, tables: true)
+    renderer.render(str)
   end
 end
 

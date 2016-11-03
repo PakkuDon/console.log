@@ -19,7 +19,7 @@
     <a href="/posts/<%= post.id %>"><%= post.title %></a>
   </h2>
   <p>
-    <%= post.content.slice(0, 200) %>
+    <%= render_markdown(post.content.slice(0, 200)) %>
   </p>
 </div>
 <% end %>
