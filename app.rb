@@ -1,4 +1,3 @@
-require 'pry'
 require 'sinatra'
 require 'redcarpet'
 require_relative 'db_config'
