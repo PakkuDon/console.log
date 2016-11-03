@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :email,
     uniqueness: true,
     format: {
-      with: /\A[A-Za-z0-9]+@\w+\z/,
+      with: /\A[A-Za-z0-9]+@\w+\.\w+\z/,
       message: 'must be a valid email'
     },
     length: {
