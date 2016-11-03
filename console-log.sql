@@ -36,7 +36,7 @@ CREATE TABLE likes (
   post_id INTEGER NOT NULL
 );
 
-CREATE TABLE followers (
+CREATE TABLE follows (
   id SERIAL4 PRIMARY KEY,
   date_followed TIMESTAMP,
   follower_id INTEGER NOT NULL,
