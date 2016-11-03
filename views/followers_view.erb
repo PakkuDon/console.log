@@ -1,0 +1,6 @@
+<h2>Followers</h2>
+<% @followers.each do |follower| %>
+  <div class="user-stub">
+    <a href="/users/<%= follower.username %>"><%= follower.username %></a>
+  </div>
+<% end %>

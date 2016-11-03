@@ -1,6 +1,14 @@
 <h2><%= @user.username %></h2>
 <p>
-  Joined <%= @user.date_joined.strftime("%b %-d %Y")%>
+  <dl>
+    <dt>Joined</dt>
+    <dd><%= @user.date_joined.strftime("%b %-d %Y")%></dd>
+    <dt>Followers</dt>
+    <dd><a href="/users/<%= @user.username %>/followers"><%= @user.followers.length %></a></dd>
+    <dt>Following</dt>
+    <dd><a href="/users/<%= @user.username %>/followees"><%= @user.followees.length %></a></dd>
+  </dl>
+
   <% if logged_in? && @user.id != current_user_id %>
     <% if following?(@user) %>
       <form action="/follows" method="post">
@@ -16,6 +24,7 @@
     <% end %>
   <% end %>
 </p>
+
 <h3>Posts</h3>
 <% @user.posts.each do |post| %>
   <div class="post">
@@ -36,7 +45,8 @@
 <% @user.likes.each do |like| %>
   <div class="post">
     <div>
-      Posted on <%= like.post.date_posted.strftime("%b %-d %Y") %>
+      Posted by <a href="/users/<%= like.post.user.username %>"><%= like.post.user.username %></a>
+      on <%= like.post.date_posted.strftime("%b %-d %Y") %>
       - <%= like.post.estimated_reading_time %>
     </div>
     <h2>

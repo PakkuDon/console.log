@@ -1,4 +1,5 @@
 require_relative '../models/user'
+require_relative '../models/follow'
 
 # -- Users
 # Show registration form
@@ -41,6 +42,32 @@ get '/users/:username' do
   if @user
     @user.posts = @user.posts.order('date_posted desc')
     erb :user_view
+  else
+    @error = 'User not found'
+    erb :error
+  end
+end
+
+# Show users following user
+get '/users/:username/followers' do
+  user = User.find_by(username: params[:username])
+
+  if user
+    @followers = user.followers
+    erb :followers_view
+  else
+    @error = 'User not found'
+    erb :error
+  end
+end
+
+# Show users followed by user
+get '/users/:username/followees' do
+  user = User.find_by(username: params[:username])
+
+  if user
+    @followees = user.followees
+    erb :followees_view
   else
     @error = 'User not found'
     erb :error
