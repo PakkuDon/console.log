@@ -27,7 +27,7 @@ helpers do
 
   # Escape HTML characters
   def escape_html(str)
-    Rack::Utils.escape_html(str)
+    CGI::escape_html(str)
   end
 
   # Convert markdown to HTML
