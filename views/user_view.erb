@@ -17,3 +17,19 @@
     </p>
   </div>
 <% end %>
+
+<h3>Liked posts</h3>
+<% @user.likes.each do |like| %>
+  <div class="post">
+    <div>
+      Posted on <%= like.post.date_posted.strftime("%b %-d %Y") %>
+      - <%= like.post.estimated_reading_time %>
+    </div>
+    <h2>
+      <a href="/posts/<%= like.post.id %>"><%= like.post.title %></a>
+    </h2>
+    <p>
+      <%= like.post.content.slice(0, 200) %>
+    </p>
+  </div>
+<% end %>
