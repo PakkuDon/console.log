@@ -1,6 +1,20 @@
 <h2><%= @user.username %></h2>
 <p>
   Joined <%= @user.date_joined.strftime("%b %-d %Y")%>
+  <% if logged_in? && @user.id != current_user_id %>
+    <% if following?(@user) %>
+      <form action="/follows" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="user_id" value="<%= @user.id %>">
+        <button>Unfollow</button>
+      </form>
+    <% else %>
+      <form action="/follows" method="post">
+        <input type="hidden" name="user_id" value="<%= @user.id %>">
+        <button>Follow</button>
+      </form>
+    <% end %>
+  <% end %>
 </p>
 <h3>Posts</h3>
 <% @user.posts.each do |post| %>

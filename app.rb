@@ -5,6 +5,7 @@ require 'redcarpet'
 require_relative 'db_config'
 require_relative 'models/user'
 require_relative 'models/post'
+require_relative 'models/follow'
 require_relative 'routes/init'
 
 enable :sessions
@@ -32,7 +33,13 @@ helpers do
 
   # Return true if user has liked post
   def liked?(post)
-    logged_in? && current_user.likes.where(post_id: post.id).any?
+    logged_in? &&
+      current_user.likes.where(post_id: post.id).any?
+  end
+
+  # Return true if current user is following given user
+  def following?(user)
+    logged_in? && current_user.followees.where(id: user.id).any?
   end
 
   # Escape HTML characters
