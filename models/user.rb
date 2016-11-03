@@ -4,10 +4,24 @@ class User < ActiveRecord::Base
   # Validation constraints
   validates :username,
     uniqueness: true,
-    length: { minimum: 4, maximum: 400 }
+    format: {
+      with: /\A[A-Za-z0-9]+\z/,
+      message: 'only allows alphanumeric characters'
+    },
+    length: {
+      minimum: 4,
+      maximum: 400
+    }
   validates :email,
     uniqueness: true,
-    length: { minimum: 4, maximum: 400 }
+    format: {
+      with: /\A[A-Za-z0-9]+@\w+\z/,
+      message: 'must be a valid email'
+    },
+    length: {
+      minimum: 4,
+      maximum: 400
+    }
 
   # Associations
   has_many :posts
