@@ -4,7 +4,7 @@ AVERAGE_WPM = 150
 
 class Post < ActiveRecord::Base
   # Validation constraints
-  validates :title, 
+  validates :title,
     length: { minimum: 1, maximum: 400 }
   validates :content,
     length: { minimum: 1 }
@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
   # Associations
   belongs_to :user
   has_many :comments
+  has_many :likes
 
   # Return estimated reading time for post content
   def estimated_reading_time
