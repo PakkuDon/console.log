@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>console.log</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body>
     <div id="wrapper">
       <header>
-        <div>
+        <div class="user-links">
           <% if logged_in? %>
             Welcome, <a href="/users/<%= current_user.username %>"><%= current_user.username %></a>
-            <form action="/session" method="post">
+            <form class="inline-form" action="/session" method="post">
               <input type="hidden" name="_method" value="delete">
-              <button>Log out</button>
+              <button class="link">Log out</button>
             </form>
           <% else %>
           <a href="/session/new">Sign in</a>
@@ -23,6 +24,9 @@
           <% end %>
         </div>
         <h1><a href="/">console.log</a></h1>
+        <p class="tagline">
+          Medium.com, without the UX. Or functionality. Or userbase. Or anything.
+        </p>
       </header>
       <main>
         <%= yield %>

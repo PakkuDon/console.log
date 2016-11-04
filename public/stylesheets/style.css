@@ -6,6 +6,7 @@ body {
   font-family: sans-serif;
   margin: 0;
   color: #002B36;
+  background-color: #EEEEEE;
 }
 
 #wrapper {
@@ -18,43 +19,100 @@ main {
   padding: 10px;
 }
 
-a {
+a,
+.link {
   color: #073642;
   text-decoration: none;
+  display: inline;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: inherit;
+  display: inline-block;
 }
 
-a:hover {
+a:hover,
+.link:hover {
   color: #586E75;
   text-decoration: underline;
 }
 
 header {
   background-color: #073642;
+  background-image: url('../images/header.png');
+  background-size: cover;
+  background-position: center;
   color: #FDF6E3;
-  padding-top: 40px;
 }
 
-header a {
-  color: #EEB700;
+header a,
+header .link {
+  color: #FDF6E3;
 }
 
-header a:hover {
-  color: #FFD700;
+header a:hover,
+header .link {
+  color: #FFEE99;
+}
+
+header h1 {
+  padding-top: 10%;
+}
+
+img {
+  max-width: 100%;
+}
+
+.tagline {
+  margin-top: -10px;
+  font-style: italic;
+}
+
+.user-links {
+  text-align: right;
+}
+
+dt {
+  font-weight: bold;
 }
 
 input,
 textarea {
   width: 100%;
-  display: block;
-  margin: 5px 0;
+  margin: 2.5px 0;
   font-size: inherit;
+  border-radius: 5px;
+  border: 2px solid #CCC;
+  padding: 5px 10px;
 }
 
-.post {
+textarea {
+  resize: vertical;
+}
+
+.post,
+.user-stub,
+.comments {
   border: 1px solid #A3C1C1;
   padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
+  margin: 10px 5px;
+  background-color: #FFF;
+  box-shadow: 5px 5px #CCC;
+}
+
+.user-stub a {
+  display: block;
+}
+
+.post-stats {
+  padding: 10px 0;
+  border-top: 1px solid #CCC;
+}
+
+.comment {
+  border-top: 2px solid #A3C1C1;
+  padding: 10px;
+  margin: 10px 0;
 }
 
 .error {
@@ -62,4 +120,23 @@ textarea {
   color: #600;
   padding: 5px;
   border: 1px solid #600;
+}
+
+.btn {
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
+
+.btn-default {
+  color: #FDF6E3;
+  background-color: #073642;
+}
+
+.btn-default:hover {
+  background-color: #586E75;
+}
+
+form.inline-form {
+  display: inline;
 }

@@ -1,4 +1,4 @@
-<h2><%= @user.username %></h2>
+<h1><%= @user.username %></h1>
 <p>
   <dl>
     <dt>Joined</dt>
@@ -14,18 +14,18 @@
       <form action="/follows" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="user_id" value="<%= @user.id %>">
-        <button>Unfollow</button>
+        <button class="btn">Unfollow</button>
       </form>
     <% else %>
       <form action="/follows" method="post">
         <input type="hidden" name="user_id" value="<%= @user.id %>">
-        <button>Follow</button>
+        <button class="btn btn-default">Follow</button>
       </form>
     <% end %>
   <% end %>
 </p>
 
-<h3>Posts</h3>
+<h2>Posts</h2>
 <% @user.posts.each do |post| %>
   <div class="post">
     <div>
@@ -41,7 +41,7 @@
   </div>
 <% end %>
 
-<h3>Liked posts</h3>
+<h2>Liked posts</h2>
 <% @user.likes.each do |like| %>
   <div class="post">
     <div>

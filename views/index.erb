@@ -1,11 +1,11 @@
 <% if logged_in? %>
 <div class="actions">
-  <a href="/posts/new">New post</a>
+  <a class="btn btn-default" href="/posts/new">New post</a>
 </div>
 <% end %>
 <form action="/">
   <input name="q" type="text" value="<%= @q %>" placeholder="Search">
-  <button>Search</button>
+  <button class="btn btn-default">Search</button>
 </form>
 
 <% @posts.each do |post| %>

@@ -1,39 +1,41 @@
-<div class="actions">
-  <% if is_owner?(@post) %>
-    <a href="/posts/<%= @post.id %>/edit">Edit</a>
-    <form action="/posts/<%= @post.id %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <button>Delete</button>
-    </form>
-  <% end %>
-</div>
-
-<div>
-  Posted by <a href="/users/<%= @post.user.username %>"><%= @post.user.username %></a>
-  on <%= @post.date_posted.strftime("%b %-d %Y") %>
-  - <%= @post.estimated_reading_time %>
-</div>
-<h2><%= @post.title %></h2>
-<p>
-  <%= render_markdown(@post.content) %>
-</p>
-<div class="post-stats">
-  <span><%= @post.view_count %> views</span>
-  <% if logged_in? %>
-    <% if liked?(@post) %>
-      <form action="/likes" method="post">
-        <input type="hidden" name="post_id" value="<%= @post.id %>">
+<div class="post">
+  <div class="actions">
+    <% if is_owner?(@post) %>
+      <a href="/posts/<%= @post.id %>/edit">Edit</a>
+      <form class="inline-form" action="/posts/<%= @post.id %>" method="post">
         <input type="hidden" name="_method" value="delete">
-        <button>Unlike</button>
-      </form>
-    <% else %>
-      <form action="/likes" method="post">
-        <input type="hidden" name="post_id" value="<%= @post.id %>">
-        <button>Like</button>
+        <button class="link">Delete</button>
       </form>
     <% end %>
-  <% end %>
-  <span><%= @post.likes.length %> likes</span>
+  </div>
+
+  <div>
+    Posted by <a href="/users/<%= @post.user.username %>"><%= @post.user.username %></a>
+    on <%= @post.date_posted.strftime("%b %-d %Y") %>
+    - <%= @post.estimated_reading_time %>
+  </div>
+  <h1><%= @post.title %></h1>
+  <p>
+    <%= render_markdown(@post.content) %>
+  </p>
+  <div class="post-stats">
+    <span><i class="fa fa-eye" aria-hidden="true"></i> <%= @post.view_count %> views</span>
+    <% if logged_in? %>
+      <% if liked?(@post) %>
+        <form class="inline-form" action="/likes" method="post">
+          <input type="hidden" name="post_id" value="<%= @post.id %>">
+          <input type="hidden" name="_method" value="delete">
+          <button class="link" title="Unlike"><i class="fa fa-heart" aria-hidden="true"></i></button>
+        </form>
+      <% else %>
+        <form class="inline-form" action="/likes" method="post">
+          <input type="hidden" name="post_id" value="<%= @post.id %>">
+          <button class="link" title="Like"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+        </form>
+      <% end %>
+    <% end %>
+    <span><%= @post.likes.length %> likes</span>
+  </div>
 </div>
 
 <div class="comments">
@@ -53,7 +55,7 @@
     <form action="/comments" method="post">
       <textarea name="content" id="" rows="5" placeholder="Leave a comment"><%= @comment ? @comment.content : "" %></textarea>
       <input type="hidden" name="post_id" value="<%= @post.id %>">
-      <button>Post comment</button>
+      <button class="btn btn-default">Post comment</button>
     </form>
   <% end %>
 
