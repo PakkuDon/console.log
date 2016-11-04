@@ -13,7 +13,9 @@
 <% end %>
 
 <form action="/posts" method="post">
-  <button class="btn btn-default">Publish</button>
+  <div class="actions">
+    <button class="btn btn-default">Publish</button>
+  </div>
   <input name="title" type="text" placeholder="Title" value="<%= @post ? @post.title : "" %>">
   <textarea name="content" id="content" cols="30" rows="10" placeholder="Content"><%= @post ? @post.content : "" %></textarea>
 </form>

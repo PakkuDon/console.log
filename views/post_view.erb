@@ -3,7 +3,7 @@
     <% if is_owner?(@post) %>
       <a href="/posts/<%= @post.id %>/edit">Edit</a>
       <form class="inline-form" action="/posts/<%= @post.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="_method" value="delete"> | 
         <button class="link">Delete</button>
       </form>
     <% end %>
@@ -33,6 +33,8 @@
           <button class="link" title="Like"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
         </form>
       <% end %>
+    <% else %>
+      <i class="fa fa-heart-o" aria-hidden="true"></i>
     <% end %>
     <span><%= @post.likes.length %> likes</span>
   </div>
