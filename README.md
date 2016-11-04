@@ -32,9 +32,12 @@ ruby app.rb
 
 ## Unsolved problems
 - Inaccurate reading time estimate
-- No restriction on image size
+- No update / delete operations for comments
+- No restriction on image dimensions
 
 ## Future stuff
+- AJAXification
+- Improve UX
 - Advanced search system
   - By author
   - By date range
@@ -46,8 +49,8 @@ ruby app.rb
 - Moderation / curation system
 - User management and permissions
 - Additional post formatting options
+- Restrict formatting options in comments
 - Break post into snippets / paragraphs
   - Comments per snippet
 - Save post as draft
 - Post visibility options
--
