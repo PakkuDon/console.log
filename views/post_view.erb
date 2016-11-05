@@ -3,7 +3,7 @@
     <% if is_owner?(@post) %>
       <a href="/posts/<%= @post.id %>/edit">Edit</a>
       <form class="inline-form" action="/posts/<%= @post.id %>" method="post">
-        <input type="hidden" name="_method" value="delete"> | 
+        <input type="hidden" name="_method" value="delete"> |
         <button class="link">Delete</button>
       </form>
     <% end %>
@@ -56,6 +56,7 @@
     <% end %>
     <form action="/comments" method="post">
       <textarea name="content" id="" rows="5" placeholder="Leave a comment"><%= @comment ? @comment.content : "" %></textarea>
+      <p>This field supports <a href="http://commonmark.org/help/" target="_blank">Markdown</a>.</p>
       <input type="hidden" name="post_id" value="<%= @post.id %>">
       <button class="btn btn-default">Post comment</button>
     </form>

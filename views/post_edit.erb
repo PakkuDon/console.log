@@ -1,4 +1,4 @@
-<h2>Editing post</h2>
+<h2>Editing <a href="/posts/<%= @post.id %>"><%= @post.title %></a></h2>
 <% if !@post.valid? %>
   <div class="error">
     The following errors occurred:
@@ -19,4 +19,5 @@
   </div>
   <input name="title" type="text" value="<%= @post.title %>" placeholder="Title">
   <textarea name="content" id="content" rows="10" placeholder="Content"><%= @post.content %></textarea>
+  <p>This field supports <a href="http://commonmark.org/help/" target="_blank">Markdown</a>.</p>
 </form>

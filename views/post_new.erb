@@ -18,4 +18,5 @@
   </div>
   <input name="title" type="text" placeholder="Title" value="<%= @post ? @post.title : "" %>">
   <textarea name="content" id="content" cols="30" rows="10" placeholder="Content"><%= @post ? @post.content : "" %></textarea>
+  <p>This field supports <a href="http://commonmark.org/help/" target="_blank">Markdown</a>.</p>
 </form>
