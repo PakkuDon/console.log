@@ -15,7 +15,8 @@ body {
 }
 
 header,
-main {
+main,
+footer {
   padding: 10px;
 }
 
